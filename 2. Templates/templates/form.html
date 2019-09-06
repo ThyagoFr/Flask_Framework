@@ -1,0 +1,11 @@
+{% extends 'index.html' %}
+{% block title %}Bloco formulario {% endblock %}
+
+{% block content %}
+<form method="POST">
+    <input type="text" name="name" placeholder="Your Name">
+    <input type="text" name="location" placeholder="Your Location">
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}

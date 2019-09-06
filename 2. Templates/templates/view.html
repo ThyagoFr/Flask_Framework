@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+{% block title %} View database values {% endblock %}
+
+{% block content %} 
+
+{% for i in data %}
+    <h1> Name : {{i['name']}} </h1>
+    <h1> Location : {{i['location']}} </h1>
+    <h1> Id : {{i['id']}} </h1>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+{% block title  %} Homepage {% endblock %}
+{% block content %}
+<h1> Hello, {{test}}</h1>
+
+{% if display %}
+<h2> Se Display for TRUE,isso aparece </h2>
+{% else %}
+<h2> Se Display for FALSE,isso aparece </h2>
+{% endif %}
+
+<h2> Lista com FOR </h2>
+{% for x in lista %}
+<h1> Valor : {{x}} </h1>
+{%endfor %}
+
+<h2> Dicionario com FOR </h2>
+{%for key,value in dic.items() %}
+<h1> Chave : {{key}} </h1>
+<h1> Valor : {{value}} </h1>
+{% endfor %}
+
+<h1> Insert a doggo img :p </h1>
+<img src="{{ url_for('static',filename='doggo.jpg') }}">
+{% endblock %}
