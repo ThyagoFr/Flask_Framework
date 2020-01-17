@@ -1,0 +1,18 @@
+{% from "_formfield.html" import formfield %}
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Flask-WTF</title>
+    </head>
+    <body>
+        <h1> The form is below!</h1>
+        <form action="/" method="POST">
+            {{formfield(form.username)}}
+            {{formfield(form.password)}}
+            {{formfield(form.age)}}
+            {{formfield(form.email)}}
+            <input type="submit" value="Submit">      
+        </form>
+    </body>
+</html>

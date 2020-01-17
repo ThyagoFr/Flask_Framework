@@ -1,0 +1,9 @@
+{% macro formfield(field) %}
+{{ field.label }}
+{{ field }}
+<ul>
+    {% for error in field.erros %}
+        <li style="color:red"> {{error}} </li>
+    {% endfor %}
+</ul>
+{% endmacro %}

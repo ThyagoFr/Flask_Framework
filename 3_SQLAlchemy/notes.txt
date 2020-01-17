@@ -1,0 +1,62 @@
+# Adicionar membro
+membro = Member(username="Thyago",password="secret",email="thyagofr@alu.ufc.br",join_date=date.today())
+db.session.add(membro)
+db.session.commit()
+
+# Deletar membro
+db.session.delete(membro)
+db.session.commit()
+
+# Atualizar membro
+membro.password = "newsecretpassword"
+db.session.commit()
+
+# Retornar um member especifico pelo username ( o primeiro encontrado )
+member = Member.query.filter_by(username = "Thyago").first()
+
+# Tambem podemos utilizar o filter(que ja utiliza a sintax do python "==")
+member = Member.query.filter(Member.username == "Thyago").first()
+
+# Retornar todos os "members" do banco
+@ retorna uma lista de membros
+resul = Member.query.all()
+
+# Retornar o primeiro membro da tabela (sem busca)
+first = Member.query.first()
+
+# Busca utilizando "like"
+@ Retorna todos os membros que contenham no username "hy", nesse caso
+@ retornaria o membro com o username "Thyago"
+like_resul = Member.query.filter(Member.username.like("%hy%")).all()
+
+# Busca utilizando "in"
+@ É passado uma lista como parametro,os membros que possuem algo da lista
+@ sao retornados
+in_resul = Member.query.filter(Member.username.in_(["Thyago","L"])).all()
+> Resul = [<Member Thyago>, <Member L>]
+
+# Busca utilizando "not in" é o inverso de "in"
+in_resul = Member.query.filter(~Member.username.in_(["Thyago","L"])).all()
+> Resul = [<Member Lucy>]
+
+# Busca utilizando and
+and_resul = Member.query.filter(Member.username == "Thyago",Member.email == "thyagofr@alu.ufc.br").all()
+OU
+and_resul = Member.query.filter(db.and_(Member.username == "Thyago",Member.email == "thyagofr@alu.ufc.br")).all()
+
+# Busca utilizando or
+or_resul = Member.query.filter(db.or_(Member.username == "Thyago",Member.email == "thyagofr@alu.ufc.br")).all()
+
+# Order by
+order_by_resul = Member.query.order_by(Member.username).all()
+
+# Limitar o numero de resultados mostrados
+limit_resul = Member.query.limit(2).all()
+
+# Contando o numero de resultados
+@ numeros de membros que a query all retorna
+n = Member.query.count() #3
+n = Member.query.filter(Member.username == "Thyago").count() # 1
+
+# Inequality
+resul = Member.query.filter(Member.id > 2).all()
