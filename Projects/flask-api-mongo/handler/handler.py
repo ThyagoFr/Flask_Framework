@@ -6,7 +6,7 @@ errors_bp = Blueprint("errors", __name__)
 
 
 class HandlerException(Exception):
-    def __init__(self, message, timestamp=None, status=None, payload=None):
+    def __init__(self, message, status=None, payload=None):
         super().__init__()
         self.message = message
         if status is not None:
